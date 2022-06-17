@@ -3,7 +3,11 @@ local Players = game:GetService("Players")
 local config = {
     BackgroundColor = Color3.fromRGB(255,255,255),
     EditorButtonColor = Color3.fromRGB(255, 170, 0),
-    EditorButtonTextColor = Color3.fromRGB(255,255,255)
+    EditorButtonTextColor = Color3.fromRGB(255,255,255),
+    CharacterTextColor = Color3.fromRGB(0,0,0),
+    CharacterTextBackground = Color3.fromRGB(255,255,255),
+    DoneButtonColor = Color3.fromRGB(85, 170, 0),
+    DoneButtonTextColor = Color3.fromRGB(255,255,255)
 }
 
 function givePlayerUi(player)
@@ -38,7 +42,31 @@ function givePlayerUi(player)
     EditorButton.TextSize = 34
     EditorButton.Text = "EDITOR"
 
+    -- Character Text
+    local CharacterText = Instance.new("TextLabel")
+    CharacterText.Parent = BackgroundFrame
+    CharacterText.Name = "CharacterText"
+    CharacterText.AnchorPoint = Vector2.new(0.5, 0)
+    CharacterText.Position = UDim2.new(0.5, 0, 0, 0)
+    CharacterText.Size = UDim2.new(0.325, 0, 0.1, 0)
+    CharacterText.TextColor3 = config.CharacterTextColor
+    CharacterText.BorderSizePixel = 0
+    CharacterText.BackgroundColor3 = config.CharacterTextBackground
+    CharacterText.TextSize = 28
+    CharacterText.Text = "Character Editor"
 
+    -- Done Button
+    local DoneButton = Instance.new("TextButton")
+    DoneButton.Parent = BackgroundFrame
+    DoneButton.Name = "DoneButton"
+    DoneButton.AnchorPoint = Vector2.new(0.5, 0.5)
+    DoneButton.Position = UDim2.new(0.5, 0, 0.925, 0)
+    DoneButton.Size = UDim2.new(0, 200, 0, 50)
+    DoneButton.TextColor3 = config.DoneButtonTextColor
+    DoneButton.BorderSizePixel = 0
+    DoneButton.BackgroundColor3 = config.DoneButtonColor
+    DoneButton.TextSize = 28
+    DoneButton.Text = "DONE"
 end
 
 Players.PlayerAdded:Connect(givePlayerUi)
